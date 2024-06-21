@@ -1,16 +1,18 @@
 <?php
 
-class perilaku {
+class perilaku
+{
 
-	function tampil($cari) {
+	function tampil($cari)
+	{
 
-	require_once "database.php";
-	$db = new database();
-	$kon = $db->connect();
+		require_once "database.php";
+		$db = new database();
+		$kon = $db->connect();
 
-  $query = $kon->query("SELECT * FROM pm_perilaku, pm_pegawai where pm_perilaku.kdpegawai=pm_pegawai.kdpegawai and pm_pegawai.namapegawai like '%$cari%'");
+		$query = $kon->query("SELECT * FROM pm_perilaku, pm_pegawai where pm_perilaku.kdpegawai=pm_pegawai.kdpegawai and pm_pegawai.namapegawai like '%$cari%'");
 
-	echo'
+		echo '
 		<table class="table table-bordered">
 			<thead style="font-weight: bold">
 				<tr>
@@ -25,47 +27,63 @@ class perilaku {
 			</thead>
 
 			<tbody>';
-				$no = 1;
-				while ($row = $query->fetch_array()) {
+		$no = 1;
+		while ($row = $query->fetch_array()) {
 
-				echo '
+			echo '
 					<tr>
-						<td style="text-align: center">'.$no.'</td>
-						<td>'.$row[namapegawai].'</td>
-						<td style="text-align: center">'.$row[nilai_dm].'</td>
-						<td style="text-align: center">'.$row[nilai_if].'</td>
-						<td style="text-align: center">'.$row[nilai_std].'</td>
-						<td style="text-align: center">'.$row[nilai_cp].'</td>
-						<td style="text-align: center"><a href="editnilai_pr.php?kdnilai3='.$row['kdnilai3'].'">
+						<td style="text-align: center">' . $no . '</td>
+						<td>' . $row['namapegawai'] . '</td>
+						<td style="text-align: center">' . $row['nilai_dm'] . '</td>
+						<td style="text-align: center">' . $row['nilai_if'] . '</td>
+						<td style="text-align: center">' . $row['nilai_std'] . '</td>
+						<td style="text-align: center">' . $row['nilai_cp'] . '</td>
+						<td style="text-align: center"><a href="editnilai_pr.php?kdnilai3=' . $row['kdnilai3'] . '">
 						<i class="fa fa-edit" style="font-size:18px; color: #282828;"></i></a></td>
 					</tr>';
-				$no++;
-				$target_dm  = $row[target_dm];
-				$target_if  = $row[target_if];
-				$target_std = $row[target_std];
-				$target_cp  = $row[target_cp];
-			}
-					echo '
+			$no++;
+			$target_dm  = $row['target_dm'];
+			$target_if  = $row['target_if'];
+			$target_std = $row['target_std'];
+			$target_cp  = $row['target_cp'];
+		}
+		echo '
 					</tbody>
 					<thead style="font-weight: bold">
 						<tr>
 							<td colspan="2">Nilai Target</td>
-							<td style="color: #282828; background-color: #fff">'.$target_dm.'</td>
-							<td style="color: #282828; background-color: #fff">'.$target_if.'</td>
-							<td style="color: #282828; background-color: #fff">'.$target_std.'</td>
-							<td style="color: #282828; background-color: #fff">'.$target_cp.'</td>
+							<td style="color: #282828; background-color: #fff">' . $target_dm . '</td>
+							<td style="color: #282828; background-color: #fff">' . $target_if . '</td>
+							<td style="color: #282828; background-color: #fff">' . $target_std . '</td>
+							<td style="color: #282828; background-color: #fff">' . $target_cp . '</td>
 						</tr>
 					</thead>
 				</table>
 				';
 	}
 
-	function input($kdpegawai, $nilai_dm, $target_dm, $selisih_dm, $nilai_bobot_dm,
-								 $nilai_if, $target_if, $selisih_if, $nilai_bobot_if,
-								 $nilai_std, $target_std, $selisih_std, $nilai_bobot_std,
-								 $nilai_cp, $target_cp, $selisih_cp, $nilai_bobot_cp,
-								 $nilai_cf_A3, $nilai_sf_A3, $nilai_tot_A3)
-	{
+	function input(
+		$kdpegawai,
+		$nilai_dm,
+		$target_dm,
+		$selisih_dm,
+		$nilai_bobot_dm,
+		$nilai_if,
+		$target_if,
+		$selisih_if,
+		$nilai_bobot_if,
+		$nilai_std,
+		$target_std,
+		$selisih_std,
+		$nilai_bobot_std,
+		$nilai_cp,
+		$target_cp,
+		$selisih_cp,
+		$nilai_bobot_cp,
+		$nilai_cf_A3,
+		$nilai_sf_A3,
+		$nilai_tot_A3
+	) {
 		require_once "database.php";
 		$db  = new database();
 		$kon = $db->connect();
@@ -83,31 +101,29 @@ class perilaku {
 
 		$qcek = $kon->query("select * from pm_perilaku where kdnilai3='$kdnilai3'");
 		$jmbaris = $qcek->num_rows;
-		if($jmbaris==1)
-		{
-			echo"<script>alert('Data Sudah Ada'); window.location='inputnilai_pr.php';</script>";
-		}
-		else {
+		if ($jmbaris == 1) {
+			echo "<script>alert('Data Sudah Ada'); window.location='inputnilai_pr.php';</script>";
+		} else {
 			$simpan = $kon->query("$query");
 
-			if($simpan) {
-				echo"<script>alert('Data Berhasil Ditambahkan'); window.location='hasil_pr.php';</script>";
+			if ($simpan) {
+				echo "<script>alert('Data Berhasil Ditambahkan'); window.location='hasil_pr.php';</script>";
+			} else {
+				echo "<script>alert('GAGAL Menambahkan Data'); window.location='inputnilai_pr.php';</script>";
 			}
-			else {
-				echo"<script>alert('GAGAL Menambahkan Data'); window.location='inputnilai_pr.php';</script>";
-				}
 		}
 	}
 
-	function selisih($cari) {
+	function selisih($cari)
+	{
 
-	require_once "database.php";
-	$db = new database();
-	$kon = $db->connect();
+		require_once "database.php";
+		$db = new database();
+		$kon = $db->connect();
 
-  $query = $kon->query("SELECT * FROM pm_perilaku, pm_pegawai where pm_perilaku.kdpegawai=pm_pegawai.kdpegawai and pm_pegawai.namapegawai like '%$cari%'");
+		$query = $kon->query("SELECT * FROM pm_perilaku, pm_pegawai where pm_perilaku.kdpegawai=pm_pegawai.kdpegawai and pm_pegawai.namapegawai like '%$cari%'");
 
-	echo'
+		echo '
 		<table class="table table-bordered">
 			<thead style="font-weight: bold">
 				<tr>
@@ -121,35 +137,36 @@ class perilaku {
 			</thead>
 
 			<tbody>';
-				$no = 1;
-				while ($row = $query->fetch_array()) {
+		$no = 1;
+		while ($row = $query->fetch_array()) {
 
-				echo '
+			echo '
 						<tr>
-							<td style="text-align: center">'.$no.'</td>
-							<td>'.$row[namapegawai].'</td>
-							<td style="text-align: center">'.$row[selisih_dm].'</td>
-							<td style="text-align: center">'.$row[selisih_if].'</td>
-							<td style="text-align: center">'.$row[selisih_std].'</td>
-							<td style="text-align: center">'.$row[selisih_cp].'</td>
+							<td style="text-align: center">' . $no . '</td>
+							<td>' . $row['namapegawai'] . '</td>
+							<td style="text-align: center">' . $row['selisih_dm'] . '</td>
+							<td style="text-align: center">' . $row['selisih_if'] . '</td>
+							<td style="text-align: center">' . $row['selisih_std'] . '</td>
+							<td style="text-align: center">' . $row['selisih_cp'] . '</td>
 						</tr>';
-								$no++;
-					}
-					echo '
+			$no++;
+		}
+		echo '
 					</tbody>
 				</table>
 				';
 	}
 
-	function factor($cari) {
+	function factor($cari)
+	{
 
-	require_once "database.php";
-	$db = new database();
-	$kon = $db->connect();
+		require_once "database.php";
+		$db = new database();
+		$kon = $db->connect();
 
-  $query = $kon->query("SELECT * FROM pm_perilaku, pm_pegawai where pm_perilaku.kdpegawai=pm_pegawai.kdpegawai and pm_pegawai.namapegawai like '%$cari%'");
+		$query = $kon->query("SELECT * FROM pm_perilaku, pm_pegawai where pm_perilaku.kdpegawai=pm_pegawai.kdpegawai and pm_pegawai.namapegawai like '%$cari%'");
 
-	echo'
+		echo '
 		<table class="table table-bordered">
 			<thead style="font-weight: bold">
 				<tr>
@@ -166,53 +183,70 @@ class perilaku {
 			</thead>
 
 			<tbody>';
-				$no = 1;
-				while ($row = $query->fetch_array()) {
+		$no = 1;
+		while ($row = $query->fetch_array()) {
 
-				echo '
+			echo '
 						<tr>
-							<td style="text-align: center">'.$no.'</td>
-							<td>'.$row[namapegawai].'</td>
-							<td style="text-align: center">'.$row[nilai_bobot_dm].'</td>
-							<td style="text-align: center">'.$row[nilai_bobot_if].'</td>
-							<td style="text-align: center">'.$row[nilai_bobot_std].'</td>
-							<td style="text-align: center">'.$row[nilai_bobot_cp].'</td>
-							<td style="text-align: center">'.round($row[nilai_cf_A3],2).'</td>
-							<td style="text-align: center">'.round($row[nilai_sf_A3],2).'</td>
-							<td style="text-align: center">'.round($row[nilai_tot_A3],2).'</td>
+							<td style="text-align: center">' . $no . '</td>
+							<td>' . $row['namapegawai'] . '</td>
+							<td style="text-align: center">' . $row['nilai_bobot_dm'] . '</td>
+							<td style="text-align: center">' . $row['nilai_bobot_if'] . '</td>
+							<td style="text-align: center">' . $row['nilai_bobot_std'] . '</td>
+							<td style="text-align: center">' . $row['nilai_bobot_cp'] . '</td>
+							<td style="text-align: center">' . round($row['nilai_cf_A3'], 2) . '</td>
+							<td style="text-align: center">' . round($row['nilai_sf_A3'], 2) . '</td>
+							<td style="text-align: center">' . round($row['nilai_tot_A3'], 2) . '</td>
 						</tr>';
-					$no++;
-				}
+			$no++;
+		}
 
-				$qkriteria_core = $kon->query("select distinct jenis from pm_kriteria where kdkriteria = 'DM' or kdkriteria = 'IF'");
-				$dtcore = $qkriteria_core->fetch_array();
-				$jenis_core = $dtcore['jenis'];
+		$qkriteria_core = $kon->query("select distinct jenis from pm_kriteria where kdkriteria = 'DM' or kdkriteria = 'IF'");
+		$dtcore = $qkriteria_core->fetch_array();
+		$jenis_core = $dtcore['jenis'];
 
-				$qkriteria_secon = $kon->query("select distinct jenis from pm_kriteria where kdkriteria = 'STD' or kdkriteria = 'CP'");
-				$dtsecon = $qkriteria_secon->fetch_array();
-				$jenis_secon = $dtsecon['jenis'];
+		$qkriteria_secon = $kon->query("select distinct jenis from pm_kriteria where kdkriteria = 'STD' or kdkriteria = 'CP'");
+		$dtsecon = $qkriteria_secon->fetch_array();
+		$jenis_secon = $dtsecon['jenis'];
 
-					echo '
+		echo '
 					</tbody>
 					<thead style="font-weight: bold">
 						<tr>
 							<td colspan="2">Jenis Factor</td>
-							<td style="color: #282828; background-color: #fff">'.$jenis_core.'</td>
-							<td style="color: #282828; background-color: #fff">'.$jenis_core.'</td>
-							<td style="color: #282828; background-color: #fff">'.$jenis_secon.'</td>
-							<td style="color: #282828; background-color: #fff">'.$jenis_secon.'</td>
+							<td style="color: #282828; background-color: #fff">' . $jenis_core . '</td>
+							<td style="color: #282828; background-color: #fff">' . $jenis_core . '</td>
+							<td style="color: #282828; background-color: #fff">' . $jenis_secon . '</td>
+							<td style="color: #282828; background-color: #fff">' . $jenis_secon . '</td>
 						</tr>
 					</thead>
 				</table>
 				';
 	}
 
-	function update($kdnilai3, $kdpegawai, $nilai_dm, $target_dm, $selisih_dm,
-									$nilai_bobot_dm, $nilai_if, $target_if, $selisih_if,
-									$nilai_bobot_if, $nilai_std, $target_std, $selisih_std,
-									$nilai_bobot_std, $nilai_cp, $target_cp, $selisih_cp,
-									$nilai_bobot_cp, $nilai_cf_A3, $nilai_sf_A3, $nilai_tot_A3)
-	{
+	function update(
+		$kdnilai3,
+		$kdpegawai,
+		$nilai_dm,
+		$target_dm,
+		$selisih_dm,
+		$nilai_bobot_dm,
+		$nilai_if,
+		$target_if,
+		$selisih_if,
+		$nilai_bobot_if,
+		$nilai_std,
+		$target_std,
+		$selisih_std,
+		$nilai_bobot_std,
+		$nilai_cp,
+		$target_cp,
+		$selisih_cp,
+		$nilai_bobot_cp,
+		$nilai_cf_A3,
+		$nilai_sf_A3,
+		$nilai_tot_A3
+	) {
 		require_once "database.php";
 		$db  = new database();
 		$kon = $db->connect();
@@ -226,12 +260,10 @@ class perilaku {
 							WHERE kdnilai3 = '$kdnilai3'";
 		$update = $kon->query("$query");
 
-		if($update) {
-			echo"<script>alert('Data Berhasil Diperbarui'); window.location='hasil_pr.php';</script>";
+		if ($update) {
+			echo "<script>alert('Data Berhasil Diperbarui'); window.location='hasil_pr.php';</script>";
+		} else {
+			echo "<script>alert('Gagal Memperbarui Data'); window.location='hasil_pr.php';</script>";
 		}
-			else {
-				echo"<script>alert('Gagal Memperbarui Data'); window.location='hasil_pr.php';</script>";
-			}
-		}
+	}
 }
-?>
