@@ -30,7 +30,7 @@
 <body>
   <div id="header">
     <!--     <img src="img/header.png"> -->
-    <img src="img/pm_header.png">
+    <!-- <img src="img/pm_header.png"> -->
   </div>
 
   <?php include_once "sidebar.php"; ?>

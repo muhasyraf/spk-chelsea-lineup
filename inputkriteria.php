@@ -21,7 +21,7 @@
   <link rel="stylesheet" type="text/css" href="css/global.css" /></link>
 
   <div id="header">
-    <img src="img/pm_header.png">
+    <!-- <img src="img/pm_header.png"> -->
   </div>
 
   <?php include_once "sidebar.php"; ?>
@@ -78,11 +78,11 @@
 						<tr><td></td></tr><tr><td></td></tr>
 							<td></td>
 							<td>
-								<button type="submit" class="btn" name="simpan">
+								<button type="submit" class="btn-save" name="simpan">
 									<i class="fa fa-save" style="font-size:16px">
 									<span style="padding-left: 5px">Simpan</i>
 								</button>
-									<span style="padding-left: 20px"><a href="datakriteria.php" class="btn-default">
+									<span style="padding-left: 20px"><a href="datakriteria.php" class="btn-delete">
 										<span style="padding-left: 5px">Batal</a>
 							</td>
 						</tr>

@@ -24,7 +24,7 @@
   <link href="icon/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/global.css" /></link>
   <div id="header">
-    <img src="img/pm_header.png">
+    <!-- <img src="img/pm_header.png"> -->
   </div>
 
   <?php include_once "sidebar.php"; ?>

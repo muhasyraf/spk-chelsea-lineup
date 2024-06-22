@@ -6,9 +6,9 @@
 		<link rel="stylesheet" type="text/css" href="css/login-style.css"></link>
 	</head>
 	<body>
-			<div>
+			<!-- <div>
 				<img src="img/bekgron.png" width="100%" height="100%">
-			</div>
+			</div> -->
 			<div class="login-box">
 				<h1>Login</h1>
 				<form name="flogin" method="post" action="periksa_log.php">

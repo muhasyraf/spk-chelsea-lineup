@@ -22,7 +22,7 @@
   <link rel="stylesheet" type="text/css" href="css/global.css" /></link>
 
   <div id="header">
-    <img src="img/pm_header.png">
+    <!-- <img src="img/pm_header.png"> -->
   </div>
 
   <?php include_once "sidebar.php"; ?>
@@ -40,7 +40,7 @@
         <button class="btn-default"><i class="fa fa-print" style="font-size:16px">
         Cetak</i></button></a></div>
 
-      <table class="table table-bordered">
+      <table class="table table-bordered" id="table-style">
         <thead style="font-weight: bold">
           <tr>
   					<td width="5%">No</td>

@@ -76,7 +76,7 @@
 						<tr><td></td></tr><tr><td></td></tr>
 							<td></td>
 							<td>
-								<button type="submit" class="btn-default" name="update">
+								<button type="submit" class="btn" name="update">
 									<i class="fa fa-save" style="font-size:16px">
 									<span style="padding-left: 5px">Update</i>
 								</button>
