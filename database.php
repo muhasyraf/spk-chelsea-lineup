@@ -5,7 +5,7 @@ class database
 
 	private $dbHost     = "localhost";
 	private $dbUser     = "root";
-	private $dbPassword = "pwd";
+	private $dbPassword = "";
 	private $dbName     = "spk-pm-chelsea";
 
 	public function connect()

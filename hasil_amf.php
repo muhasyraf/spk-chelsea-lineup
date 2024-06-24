@@ -13,13 +13,13 @@
 ?>
 
 <?php
-  require_once "class/sikap.php";
-  $sikap = new sikap();
+  require_once "class/amf.php";
+  $AttackingMidfielder = new AttackingMidfielder();
 ?>
 
 <html>
 <head>
-  <title>Sikap Kerja</title>
+  <title>Penilaian Attacking Midfielder</title>
 
   <link rel="shortcut icon" href="img/favicon.png">
 
@@ -35,23 +35,23 @@
 
 <body>
   <div class="content">
-      <i class="fa fa-check-square-o" style="font-size: 28px;"><span style="padding-left: 15px;">Hasil Akhir <small>&raquo; Sikap Kerja</small></span></i>
+      <i class="fa fa-check-square-o" style="font-size: 28px;"><span style="padding-left: 15px;">Hasil Akhir <small>&raquo; Penilaian Attacking Midfielder</small></span></i>
         <h3 style="margin-top: 25px; padding-left: 10px">Nilai Profil :</h3>
-        <table width=100%>
-          <?php
-            $sikap->tampil($cari);
-          ?>
-        </table>
-      <br><br><h3 style="padding-left: 10px">Pemetaan Gap :</h3>
         <table width=100%;>
             <?php
-              $sikap->selisih($cari);
+              $AttackingMidfielder->tampil($cari);
             ?>
         </table>
-      <br><br><h3 style="padding-left: 10px">Pembobotan Nilai Gap dan Perhitungan <i>Factor</i> :</h3>
+      <br><br><h3>Pemetaan Gap :</h3>
+        <table width=100%;>
+            <?php
+              $AttackingMidfielder->selisih($cari);
+            ?>
+        </table>
+      <br><br><h3>Pembobotan Nilai Gap, Perhitungan <i>Factor</i>, dan Perankingan:</h3>
         <table width=100%;>
           <?php
-            $sikap->factor($cari);
+            $AttackingMidfielder->factor($cari);
           ?>
         </table>
   </div>

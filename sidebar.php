@@ -3,7 +3,7 @@
     <img src="img\Blue Illustrative Football Logo.svg" alt="">
   </div>
   <div style='color:#636363; font-size: 20px; padding-top: 20px; padding-bottom: 20px; text-align: center;'>
-    <?php session_start();
+    <?php 
     echo "Selamat Datang,<br>" . $_SESSION['nama']; ?>
   </div>
   <ul id="nav">

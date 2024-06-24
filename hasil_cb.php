@@ -13,13 +13,13 @@
 ?>
 
 <?php
-  require_once "class/perilaku.php";
-  $perilaku = new perilaku();
+  require_once "class/cb.php";
+  $CentreBack = new CentreBack();
 ?>
 
 <html>
 <head>
-  <title>Perilaku</title>
+  <title>Penilaian Centre Back</title>
 
   <link rel="shortcut icon" href="img/favicon.png">
 
@@ -35,23 +35,23 @@
 
 <body>
   <div class="content">
-      <i class="fa fa-check-square-o" style="font-size: 28px;"><span style="padding-left: 15px;">Hasil Akhir <small>&raquo; Perilaku</small></span></i>
+      <i class="fa fa-check-square-o" style="font-size: 28px;"><span style="padding-left: 15px;">Hasil Akhir <small>&raquo; Penilaian Centre Back</small></span></i>
         <h3 style="margin-top: 25px; padding-left: 10px">Nilai Profil :</h3>
+        <table width=100%>
+          <?php
+            $CentreBack->tampil($cari);
+          ?>
+        </table>
+      <br><br><h3 style="padding-left: 10px">Pemetaan Gap :</h3>
         <table width=100%;>
             <?php
-              $perilaku->tampil($cari);
+              $CentreBack->selisih($cari);
             ?>
         </table>
-      <br><br><h3>Pemetaan Gap :</h3>
-        <table width=100%;>
-            <?php
-              $perilaku->selisih($cari);
-            ?>
-        </table>
-      <br><br><h3>Pembobotan Nilai Gap dan Perhitungan <i>Factor</i> :</h3>
+      <br><br><h3 style="padding-left: 10px">Pembobotan Nilai Gap, Perhitungan <i>Factor</i>, dan Perankingan:</h3>
         <table width=100%;>
           <?php
-            $perilaku->factor($cari);
+            $CentreBack->factor($cari);
           ?>
         </table>
   </div>

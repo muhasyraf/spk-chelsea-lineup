@@ -170,7 +170,29 @@ CREATE TABLE `pm_pemain` (
 
 INSERT INTO `pm_pemain` (`kdpemain`, `namapemain`, `posisi`) VALUES
 ('RS1', 'Robert Sanchez', 'GK'),
-('DP28', 'Djordje Petrovic', 'GK');
+('DP28', 'Djordje Petrovic', 'GK'),
+('BB5', 'Benoit Badiashile', 'CB'),
+('TS6', 'Thiago Silva', 'CB'),
+('AD2', 'Axel Disasi', 'CB'),
+('TC14', 'Trevoh Chalobah', 'CB'),
+('BC21', 'Ben Chilwell', 'LB'),
+('MC3', 'Marc Cucurella', 'LB'),
+('LC26', 'Levi Colwill', 'LB'),
+('RJ24', 'Reece James', 'RB'),
+('AG42', 'Alfie Gilchrist', 'RB'),
+('MG27', 'Malo Gusto', 'RB'),
+('EF8', 'Enzo Fernandez', 'CMF'),
+('LU16', 'Lesley Ugochukwu', 'CMF'),
+('MC25', 'Moises Caicedo', 'CMF'),
+('MM10', 'Mykhailo Mudryk', 'LM'),
+('RS7', 'Raheem Sterling', 'LM'),
+('CP20', 'Cole Palmer', 'RM'),
+('NM11', 'Noni Madueke', 'RM'),
+('CG23', 'Conor Gallagher', 'AMF'),
+('CP18', 'Christopher Nkunku', 'AMF'),
+('NM17', 'Carney Chukwuemeka', 'AMF'),
+('NJ15', 'Nicolas Jackson', 'CF'),
+('AB19', 'Armando Broja', 'CF');
 
 -- --------------------------------------------------------
 
