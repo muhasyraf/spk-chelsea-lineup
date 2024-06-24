@@ -10,7 +10,7 @@ class kriteria
 		$db = new database();
 		$kon = $db->connect();
 
-		$query = $kon->query("SELECT * FROM pm_kriteria, pm_aspek where pm_kriteria.id_aspek=pm_aspek.id_aspek and pm_kriteria.nmkriteria like '%$cari%'");
+		$query = $kon->query("SELECT * FROM pm_kriteria, pm_posisi where pm_kriteria.id_posisi=pm_posisi.id_posisi and pm_kriteria.nmkriteria like '%$cari%'");
 
 		echo '
 		<table class="table table-bordered">
@@ -18,7 +18,7 @@ class kriteria
 				<tr>
 					<td width="2%" style="text-align: center">No.</td>
 					<td width="2%" style="text-align: center">Kode Kriteria</td>
-					<td width="10%" style="text-align: center">Aspek</td>
+					<td width="10%" style="text-align: center">Posisi</td>
 					<td width="15%" style="text-align: center">Kriteria</td>
 					<td width="2%" style="text-align: center">Jenis <br>Factor</td>
 					<td width="2%" style="text-align: center">Nilai Target</td>
@@ -40,7 +40,7 @@ class kriteria
 						<tr>
 							<td style="text-align: center">' . $no . '</td>
 							<td>' . $row['kdkriteria'] . '</td>
-							<td>' . $row['namaaspek'] . '</td>
+							<td>' . $row['namaposisi'] . '</td>
 							<td>' . $row['nmkriteria'] . '</td>
 							<td>' . $row['jenis'] . '</td>
 							<td style="text-align: center">' . $row['target'] . '</td>
@@ -62,13 +62,13 @@ class kriteria
 		}
 	}
 
-	function input($idaspek, $kdkriteria, $nmkriteria, $jenis, $target)
+	function input($idposisi, $kdkriteria, $nmkriteria, $jenis, $target)
 	{
 		require_once "database.php";
 		$db  = new database();
 		$kon = $db->connect();
 
-		$query = "INSERT INTO pm_kriteria (id_aspek,kdkriteria,nmkriteria,jenis,target) VALUES ('$idaspek','$kdkriteria','$nmkriteria','$jenis','$target')";
+		$query = "INSERT INTO pm_kriteria (id_posisi,kdkriteria,nmkriteria,jenis,target) VALUES ('$idposisi','$kdkriteria','$nmkriteria','$jenis','$target')";
 		$qcek = $kon->query("select * from pm_kriteria where kdkriteria='$kdkriteria'");
 		$jmbaris = $qcek->num_rows;
 		if ($jmbaris == 1) {
@@ -84,14 +84,14 @@ class kriteria
 		}
 	}
 
-	function update($idaspek, $kdkriteria, $nmkriteria, $jenis, $target)
+	function update($idposisi, $kdkriteria, $nmkriteria, $jenis, $target)
 	{
 
 		require_once "database.php";
 		$db  = new database();
 		$kon = $db->connect();
 
-		$query = "UPDATE pm_kriteria set id_aspek='$idaspek', kdkriteria='$kdkriteria', nmkriteria='$nmkriteria', jenis='$jenis', target='$target' WHERE kdkriteria='$kdkriteria'";
+		$query = "UPDATE pm_kriteria set id_posisi='$idposisi', kdkriteria='$kdkriteria', nmkriteria='$nmkriteria', jenis='$jenis', target='$target' WHERE kdkriteria='$kdkriteria'";
 		$update = $kon->query("$query");
 
 		if ($update) {

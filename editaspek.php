@@ -1,96 +1,84 @@
 <?php
-  session_start();
-  if(!isset($_SESSION['nama']))
-  {
-    echo "
+session_start();
+if (!isset($_SESSION['nama'])) {
+  echo "
       <script type=text/javascript>
         alert('Silakan login terlebih dahulu !');
         window.location = 'login.php';
       </script>
     ";
-    exit;
-  }
+  exit;
+}
 ?>
 
 <html>
+
 <head>
-  <title>Edit Aspek</title>
+  <title>Edit Posisi</title>
   <link rel="shortcut icon" href="img/favicon.png">
 
   <link href="icon/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/global.css" /></link>
+  <link rel="stylesheet" type="text/css" href="css/global.css" />
+  </link>
 
   <div id="header">
-		<img src="img/pm_header.png">
-	</div>
+    <img src="img/pm_header.png">
+  </div>
 </head>
 
 <body>
   <?php include_once "sidebar.php"; ?>
 
   <div class="content">
-    <i class="fa fa-edit" style="font-size: 26px;"><span style="padding-left: 15px;">Form Edit Aspek</i>
+    <i class="fa fa-edit" style="font-size: 26px;"><span style="padding-left: 15px;">Form Edit Posisi</i>
 
-<?php
-  $id = $_GET['id_aspek'];
+    <?php
+    $id = $_GET['id_posisi'];
 
-  require_once "database.php";
-  $db = new database();
-  $kon = $db->connect();
-  $query = $kon->query("SELECT * FROM pm_aspek where id_aspek='$id'");
-  while ($row = $query->fetch_array()) {
-    $idaspek    = $row['id_aspek'];
-    $namaaspek  = $row['namaaspek'];
-    $persentase = $row['persentase'];
-    $bobotcore  = $row['bobot_core'];
-    $bobotsecondary = $row['bobot_secondary'];
-  }
-?>
+    require_once "database.php";
+    $db = new database();
+    $kon = $db->connect();
+    $query = $kon->query("SELECT * FROM pm_aspek where id_posisi='$id'");
+    while ($row = $query->fetch_array()) {
+      $idaspek    = $row['id_posisi'];
+      $namaposisi  = $row['namaposisi'];
+    }
+    ?>
 
-  <div id="container">
+    <div id="container">
       <div id="box">
-        <div class="box-top"><i>Mengubah Data Aspek</i></div>
+        <div class="box-top"><i>Mengubah Data Posisi</i></div>
         <div class="box-panel">
-					<form method="POST" action="prosesaspek.php">
-					<table class="table">
-						<tr>
-							<td>ID Aspek</td>
-							<td><input type="text" name="id_aspek" readonly value="<?=$idaspek;?>"></td>
-						</tr>
-						<tr>
-							<td>Aspek</td>
-							<td><input type="text" name="namaaspek" value="<?=$namaaspek;?>"></td>
-						</tr>
-            <tr>
-              <td>Persentase</td>
-              <td><input type="text" name="persentase" value="<?=$persentase;?>"></td>
-            </tr>
-            <tr>
-              <td>Bobot Core (%)</td>
-              <td><input type="text" name="bobotcore" value="<?=$bobotcore;?>"></td>
-            </tr>
-            <tr>
-              <td>Bobot Secondary (%)</td>
-              <td><input type="text" name="bobotsecondary" value="<?=$bobotsecondary;?>"></td>
-            </tr>
-						<tr><td></td></tr><tr><td></td></tr>
-							<td></td>
-							<td>
-								<button type="submit" class="btn" name="update">
-									<i class="fa fa-save" style="font-size:16px">
-									<span style="padding-left: 5px">Update</i>
-								</button>
-							</td>
-						</tr>
-					</table>
-					</form>
-        </div>
-        <div class="box-bottom">&copy; <strong>2018</strong> - All Rights Reserved
-          <span style="font-size: 28px; padding-left: 5px; padding-right: 5px">|</span>
-          Developed by: <strong>Randi Triyudanto</strong>
+          <form method="POST" action="prosesaspek.php">
+            <table class="table">
+              <tr>
+                <td>ID Posisi</td>
+                <td><input type="text" name="id_posisi" readonly value="<?= $idaspek; ?>"></td>
+              </tr>
+              <tr>
+                <td>Aspek</td>
+                <td><input type="text" name="namaposisi" value="<?= $namaposisi; ?>"></td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <tr>
+                <td></td>
+              </tr>
+              <td></td>
+              <td>
+                <button type="submit" class="btn" name="update">
+                  <i class="fa fa-save" style="font-size:16px">
+                    <span style="padding-left: 5px">Update</i>
+                </button>
+              </td>
+              </tr>
+            </table>
+          </form>
         </div>
       </div>
     </div>
   </div>
 </body>
+
 </html>

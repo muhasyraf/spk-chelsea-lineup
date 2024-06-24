@@ -10,16 +10,16 @@ class pegawai
 		$db = new database();
 		$kon = $db->connect();
 
-		$query = $kon->query("SELECT * FROM pm_pegawai where namapegawai like '%$cari%'");
+		$query = $kon->query("SELECT * FROM pm_pemain where namapemain like '%$cari%'");
 
 		echo '
 		<table class="table table-bordered">
 			<thead style="font-weight: bold">
 				<tr>
 					<td width="2%" style="text-align: center">No.</td>
-					<td width="5%" style="text-align: center">Kode Pegawai</td>
-					<td width="15%" style="text-align: center">Nama Pegawai</td>
-					<td width="5%" style="text-align: center">Tahun Masuk</td>
+					<td width="5%" style="text-align: center">Kode Pemain</td>
+					<td width="15%" style="text-align: center">Nama Pemain</td>
+					<td width="5%" style="text-align: center">Posisi</td>
 					<td colspan="2" width="5%" style="text-align: center">Aksi</td>
 				</tr>
 			</thead>
@@ -37,15 +37,14 @@ class pegawai
 				echo '
 						<tr>
 							<td style="text-align: center">' . $no . '</td>
-							<td style="text-align: center">' . $row['kdpegawai'] . '</td>
-							<td>' . $row['namapegawai'] . '</td>
-							<td style="text-align: center">' . $row['thn_masuk'] . '</td>
-
-							<td style="text-align: center"><a href="editpegawai.php?kdpegawai=' . $row['kdpegawai'] . '">
+							<td style="text-align: center">' . $row['kdpemain'] . '</td>
+							<td style="text-align: center">' . $row['namapemain'] . '</td>
+							<td style="text-align: center">' . $row['posisi'] . '</td>
+							<td style="text-align: center"><a href="editpegawai.php?kdpemain=' . $row['kdpemain'] . '">
 							<i class="fa fa-edit" style="font-size:20px; color:black;"></i></a>
 
-							<td style="text-align: center"><a title="Hapus" href="hapuspegawai.php?kdpegawai=' . $row['kdpegawai'] . '"
-								onclick="return confirm("Anda yakin ingin menghapus Data Pegawai?");">
+							<td style="text-align: center"><a title="Hapus" href="hapuspegawai.php?kdpemain=' . $row['kdpemain'] . '"
+								onclick="return confirm("Anda yakin ingin menghapus Data Pemain?");">
 								<i class="fa fa-trash" style="font-size:20px; color:red;"></i></a>
 							</td>
 									 </tr>';
@@ -58,14 +57,13 @@ class pegawai
 		}
 	}
 
-	function input($kdpegawai, $namapegawai, $thn_masuk)
+	function input($kdpemain, $namapemain, $posisi)
 	{
 		require_once "database.php";
 		$db  = new database();
 		$kon = $db->connect();
-		$query = "INSERT INTO pm_pegawai (kdpegawai,namapegawai,thn_masuk) VALUES ('$kdpegawai','$namapegawai','$thn_masuk')";
-		// echo $query;
-		$qcek = $kon->query("select * from pm_pegawai where kdpegawai='$kdpegawai'");
+		$query = "INSERT INTO pm_pemain (kdpemain,namapemain,posisi) VALUES ('$kdpemain','$namapemain', '$posisi')";
+		$qcek = $kon->query("select * from pm_pemain where kdpemain='$kdpemain'");
 		$jmbaris = $qcek->num_rows;
 		if ($jmbaris == 1) {
 			echo "<script>alert('Data sudah ada'); window.location='inputpegawai.php';</script>";
@@ -80,14 +78,14 @@ class pegawai
 		}
 	}
 
-	function update($kdpegawai, $namapegawai, $thn_masuk)
+	function update($kdpemain, $namapemain, $posisi)
 	{
 
 		require_once "database.php";
 		$db  = new database();
 		$kon = $db->connect();
 
-		$query = "UPDATE pm_pegawai set kdpegawai='$kdpegawai', namapegawai='$namapegawai', thn_masuk='$thn_masuk' where kdpegawai='$kdpegawai'";
+		$query = "UPDATE pm_pemain set kdpemain='$kdpemain', namapemain='$namapemain', posisi='$posisi where kdpemain='$kdpemain'";
 
 		$update = $kon->query("$query");
 
@@ -98,13 +96,13 @@ class pegawai
 		}
 	}
 
-	function hapus($kdpegawai)
+	function hapus($kdpemain)
 	{
 		require_once "database.php";
 		$db  = new database();
 		$kon = $db->connect();
 
-		$hapus = $kon->query("DELETE FROM pm_pegawai WHERE kdpegawai = '$kdpegawai'");
+		$hapus = $kon->query("DELETE FROM pm_pemain WHERE kdpemain = '$kdpemain'");
 
 		if ($hapus) {
 			echo "<script>alert('Data berhasil Dihapus'); window.location='datapegawai.php';</script>";

@@ -1,28 +1,29 @@
 <?php
-  session_start();
-  if(!isset($_SESSION['nama']))
-  {
-    echo "
+session_start();
+if (!isset($_SESSION['nama'])) {
+  echo "
       <script type=text/javascript>
         alert('Silakan login terlebih dahulu !');
         window.location = 'login.php';
       </script>
     ";
-    exit;
-  }
+  exit;
+}
 ?>
 
 <?php
-  require_once "class/aspek.php";
-  $aspek = new aspek()
+require_once "class/aspek.php";
+$aspek = new aspek()
 ?>
 
 <html>
+
 <head>
-  <title>Data Aspek</title>
+  <title>Data Posisi</title>
   <link rel="shortcut icon" href="img/favicon.png">
   <link href="icon/css/font-awesome.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="css/global.css" /></link>
+  <link rel="stylesheet" type="text/css" href="css/global.css" />
+  </link>
   <div id="header">
     <!-- <img src="img/pm_header.png"> -->
   </div>
@@ -32,46 +33,42 @@
 
 <body>
   <div class="content">
-      <i class="fa fa-th-large" style="font-size: 28px;"><span style="padding-left: 15px;">Data Aspek</span></i>
+    <i class="fa fa-th-large" style="font-size: 28px;"><span style="padding-left: 15px;">Data Posisi</span></i>
     <div id="box">
-      <div class="box-top"><i>Menampilkan Data Aspek</i></div>
+      <div class="box-top"><i>Menampilkan Data Posisi</i></div>
       <div class="box-panel">
         <table width=100%;>
           <tr>
             <td style="width:65%; padding-top:15px;"><a href="inputaspek.php">
                 <button class="btn"><i class="fa fa-plus" style="font-size:16px">
-                <span style="padding-left: 5px"> Aspek</span></i></button></a></span>
+                    <span style="padding-left: 5px"> Posisi</span></i></button></a></span>
             </td>
             <td>
-          <form method="post" action="dataaspek.php">
-          <?php
-          $cari = $_POST['cariaspek'];
+              <form method="post" action="dataaspek.php">
+                <?php
+                $cari = $_POST['cariposisi'];
 
-          if($_POST['cariaspek'])
-          {
-            echo'
+                if ($_POST['cariposisi']) {
+                  echo '
               <a href="dataaspek.php" style="font-size:12px;">Reset Pencarian</>
-              <input type="text" name="cariaspek" placeholder="Cari Aspek" value='.$cari.'>';
-          } else {
-            echo'<input type="text" name="cariaspek" placeholder="Cari Aspek">';
-          }
-          ?>
-          <button type="submit" class="btn">
-            <i class="fa fa-search" style="font-size:16px;"></i>
-          </button>
-          </form>
-      </td>
-    </tr>
+              <input type="text" name="cariposisi" placeholder="Cari Posisi" value=' . $cari . '>';
+                } else {
+                  echo '<input type="text" name="cariposisi" placeholder="Cari Posisi">';
+                }
+                ?>
+                <button type="submit" class="btn">
+                  <i class="fa fa-search" style="font-size:16px;"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
 
-      <?php
+          <?php
           $aspek->tampil($cari);
-      ?>
-      <div class="box-bottom">&copy; <strong>2018</strong> - All Rights Reserved
-        <span style="font-size: 28px; padding-left: 5px; padding-right: 5px">|</span>
-        Developed by: <strong>Randi Triyudanto</strong>
-      </div>
+          ?>
       </div>
     </div>
   </div>
 </body>
+
 </html>

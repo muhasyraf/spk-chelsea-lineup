@@ -71,7 +71,7 @@ div#container {
 
 .sidebar {
 	width: 225px;
-	height: 200%;
+	height: 100%;
 	background-color: #F6F6F4;
 	float: left;
 	list-style: none;

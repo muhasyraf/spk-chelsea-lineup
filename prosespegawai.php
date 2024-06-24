@@ -3,26 +3,26 @@ require "database.php";
 $db = new database();
 require_once "class/pegawai.php";
 
-$pegawai = new pegawai($db);
+$pemain = new pegawai($db);
 
 if (isset($_POST['simpan'])) {
-  $kdpegawai   = $_POST['kdpegawai'];
-  $namapegawai = $_POST['namapegawai'];
-  $thn_masuk   = $_POST['thn_masuk'];
-
-  $pegawai->input($kdpegawai, $namapegawai, $thn_masuk);
+  $kdpemain   = $_POST['kdpemain'];
+  $namapemain = $_POST['namapemain'];
+  $posisi   = $_POST['posisi'];
+  // echo $kdpemain;
+  $pemain->input($kdpemain, $namapemain, $posisi);
   // echo "<script>alert('Data Berhasil Ditambahkan'); window.location='datapegawai.php';</script>";
 }
 
 if (isset($_POST['update'])) {
-  $kdpegawai   = $_POST['kdpegawai'];
-  $namapegawai = $_POST['namapegawai'];
-  $thn_masuk   = $_POST['thn_masuk'];
+  $kdpemain   = $_POST['kdpemain'];
+  $namapemain = $_POST['namapemain'];
+  $posisi   = $_POST['posisi'];
 
-  $pegawai->update($kdpegawai, $namapegawai, $thn_masuk);
+  $pemain->update($kdpemain, $namapemain, $posisi);
 }
 
 if (isset($_POST['hapus'])) {
-  $pegawai->hapus($kdpegawai);
+  $pemain->hapus($kdpemain);
   header("location: datapegawai.php");
 }
