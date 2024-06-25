@@ -81,10 +81,6 @@ if (!isset($_SESSION['nama'])) {
             </table>
           </form>
         </div>
-        <div class="box-bottom">&copy; <strong>2018</strong> - All Rights Reserved
-          <span style="font-size: 28px; padding-left: 5px; padding-right: 5px">|</span>
-          Developed by: <strong>Randi Triyudanto</strong>
-        </div>
       </div>
     </div>
   </div>

@@ -117,7 +117,7 @@ class AttackingMidfielder
 			$simpan = $kon->query("$query");
 
 			if ($simpan) {
-				echo "<script>alert('Data Berhasil Ditambahkan'); window.location='hasil_amf.php';</script>";
+				echo "<script>alert('Data Berhasil Ditambahkan'); window.location='inputnilai_amf.php';</script>";
 			} else {
 				echo "<script>alert('GAGAL Menambahkan Data'); window.location='inputnilai_amf.php';</script>";
 			}
@@ -221,7 +221,7 @@ class AttackingMidfielder
 
 		$qkriteria_secon = $kon->query("select distinct jenis from pm_kriteria where kdkriteria = 'AMDW' or kdkriteria = 'AMCA'");
 		$dtsecon = $qkriteria_secon->fetch_array();
-		$jenis_secon = $dtsecon['jenis'];
+		$jenis_sec = $dtsecon['jenis'];
 
 		echo '
 					</tbody>
@@ -231,8 +231,8 @@ class AttackingMidfielder
 							<td style="color: #282828; background-color: #fff">' . $jenis_core . '</td>
 							<td style="color: #282828; background-color: #fff">' . $jenis_core . '</td>
 							<td style="color: #282828; background-color: #fff">' . $jenis_core . '</td>
-							<td style="color: #282828; background-color: #fff">' . $jenis_secon . '</td>
-							<td style="color: #282828; background-color: #fff">' . $jenis_secon . '</td>
+							<td style="color: #282828; background-color: #fff">' . $jenis_sec . '</td>
+							<td style="color: #282828; background-color: #fff">' . $jenis_sec . '</td>
 						</tr>
 					</thead>
 				</table>

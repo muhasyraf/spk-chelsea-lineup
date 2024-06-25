@@ -49,7 +49,6 @@ class CentreBack
 			$target_dw  = $row['target_dw'];
 			$target_cr  = $row['target_cr'];
 			$target_cs  = $row['target_cs'];
-
 		}
 		echo '
 					</tbody>
@@ -117,7 +116,7 @@ class CentreBack
 			$simpan = $kon->query("$query");
 
 			if ($simpan) {
-				echo "<script>alert('Data Berhasil Ditambahkan'); window.location='hasil_cb.php';</script>";
+				echo "<script>alert('Data Berhasil Ditambahkan'); window.location='inputnilai_cb.php';</script>";
 			} else {
 				echo "<script>alert('GAGAL Menambahkan Data'); window.location='inputnilai_cb.php';</script>";
 			}
@@ -227,11 +226,11 @@ class CentreBack
 					<thead style="font-weight: bold">
 						<tr>
 							<td colspan="2">Jenis Factor</td>
-							<td style="color: #282828; background-color: #fff">' . $jenis_secon . '</td>
+							<td style="color: #282828; background-color: #fff">' . $jenis_sec . '</td>
 							<td style="color: #282828; background-color: #fff">' . $jenis_core . '</td>
 							<td style="color: #282828; background-color: #fff">' . $jenis_core . '</td>
 							<td style="color: #282828; background-color: #fff">' . $jenis_core . '</td>
-							<td style="color: #282828; background-color: #fff">' . $jenis_secon . '</td>
+							<td style="color: #282828; background-color: #fff">' . $jenis_sec . '</td>
 
 						</tr>
 					</thead>

@@ -108,7 +108,7 @@ class Goalkeeper
 			$simpan = $kon->query("$query");
 
 			if ($simpan) {
-				echo "<script>alert('Data Berhasil Ditambahkan'); window.location='hasil_gk.php';</script>";
+				echo "<script>alert('Data Berhasil Ditambahkan'); window.location='inputnilai_gk.php';</script>";
 			} else {
 				echo "<script>alert('Gagal Menambahkan Data'); window.location='inputnilai_gk.php';</script>";
 			}

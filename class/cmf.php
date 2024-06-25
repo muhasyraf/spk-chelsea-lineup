@@ -117,7 +117,7 @@ class CentralMidfielder
 			$simpan = $kon->query("$query");
 
 			if ($simpan) {
-				echo "<script>alert('Data Berhasil Ditambahkan'); window.location='hasil_cmf.php';</script>";
+				echo "<script>alert('Data Berhasil Ditambahkan'); window.location='inputnilai_cmf.php';</script>";
 			} else {
 				echo "<script>alert('GAGAL Menambahkan Data'); window.location='inputnilai_cmf.php';</script>";
 			}
